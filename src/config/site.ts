@@ -1,4 +1,6 @@
-export type SiteConfig = typeof siteConfig;
+import { CategoryChipProps } from "@/components/base/chips/category-chip"
+
+export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
   name: "E-Commerce",
@@ -62,4 +64,13 @@ export const siteConfig = {
     discord: "https://discord.gg/9b6yyZKmH4",
     sponsor: "https://patreon.com/jrgarciadev",
   },
-};
+}
+
+export const categories: CategoryChipProps[] = [
+  { id: "a", name: "men" },
+  { id: "b", name: "women" },
+  { id: "c", name: "teen" },
+  { id: "d", name: "kids" },
+  { id: "e", name: "trendy" },
+  { id: "f", name: "popular" },
+]

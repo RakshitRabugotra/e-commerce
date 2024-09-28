@@ -98,3 +98,13 @@ export const SearchIcon = (props: IconSvgProps) => (
     />
   </svg>
 );
+
+
+/**
+ * React Icons
+ */
+import { FaShoppingBag, FaStar } from "react-icons/fa";
+import { IconBaseProps } from "react-icons";
+
+export const ShoppingBag = (props: IconBaseProps) => <FaShoppingBag {...props} />
+export const RatingStar = (props: IconBaseProps) => <FaStar {...props} />
