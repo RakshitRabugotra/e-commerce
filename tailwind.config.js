@@ -12,9 +12,11 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-sans)"],
         mono: ["var(--font-mono)"],
+        satoshi: ["Satoshi-Variable", "sans-serif"],
+        "satoshi-italic": ["Satoshi-VariableItalic", "sans-serif"],
       },
     },
   },
   darkMode: "class",
   plugins: [nextui()],
-};
+}
