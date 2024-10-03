@@ -1,6 +1,7 @@
 import { RatingStar } from "@/components/icons"
 import { Product } from "@/types"
 import { Card, CardBody, CardHeader } from "@nextui-org/card"
+import { Link } from "@nextui-org/link"
 import clsx from "clsx"
 import Image from "next/image"
 
@@ -17,10 +18,13 @@ export const ProductCard: React.FC<
 > = ({ title, image, rating, price, ...rest }) => {
   return (
     <Card
+      isPressable
+      as={Link}
+      href={"/product/" + rest.id}
       radius="none"
       shadow="none"
       className={clsx(
-        "!aspect-auto max-w-[400px] bg-transparent",
+        "!aspect-auto max-w-[400px] rounded-xl bg-transparent p-1.5 shadow-lg",
         rest.className,
         rest.classNames?.base
       )}

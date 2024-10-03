@@ -16,3 +16,11 @@ export interface Product {
       count: number
   }
 }
+
+/**
+ * Page prop types
+ */
+export interface DynamicPageProps {
+  params: { id: string },
+  searchParams?: { [key: string]: string | undefined }
+}

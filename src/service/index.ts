@@ -1,3 +1,5 @@
+import { Product } from "@/types"
+
 export const BASE_URL = `https://fakestoreapi.com/products/`
 
 type ExtendedRequestInit = RequestInit & {
@@ -24,5 +26,12 @@ export const productFetch = (endpoint: string, init?: ExtendedRequestInit) => {
  * @param init normal options for the fetch
  * @returns Promise for the response returns a single `Product`
  */
-export const getSingle = (id: string, init?: ExtendedRequestInit) =>
-  productFetch(id, init)
+export const getSingle = async (id: string, init?: ExtendedRequestInit) => {
+  try {
+    const response = await productFetch(id, init)
+    return (await response.json()) as Product
+  } catch (error) {
+    console.error("error while fetching product: ", error)
+    return null
+  }
+}
