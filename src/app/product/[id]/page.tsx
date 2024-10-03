@@ -1,10 +1,8 @@
 import { DynamicPageProps, Product } from "@/types"
 
 // UI
-import { Link } from "@nextui-org/link"
 // Components
 import ImageCard from "@/components/base/card/image-card"
-import BookButton from "@/components/base/button/book-button"
 
 // Icons
 import {
@@ -33,7 +31,7 @@ export default async function ProductPage({ params }: DynamicPageProps) {
       <MobileHeader title="details" />
 
       {/* The image section with the card */}
-      <div className="mt-24">
+      <div className="mt-20">
         <ImageCard {...product} />
       </div>
       {/* The section with headings */}
