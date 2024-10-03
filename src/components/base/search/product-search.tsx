@@ -1,7 +1,5 @@
 "use client"
 
-import { useState } from "react"
-
 // Components
 import { Link } from "@nextui-org/link"
 import { Button } from "@nextui-org/button"
@@ -22,9 +20,12 @@ export const ProductSearch = ({
   return (
     <Input
       size="md"
-      radius="full"
+      radius="none"
       variant="flat"
-      className={clsx("max-w-md select-none", className)}
+      className={clsx(
+        "max-w-md select-none text-xl font-medium focus-within:border-foreground",
+        className
+      )}
       classNames={{
         inputWrapper: "pr-0 h-11",
       }}
@@ -39,9 +40,11 @@ const SubmitButton = ({ value }: { value: string }) => {
   return (
     <Button
       as={Link}
-      className="aspect-square h-full min-w-fit rounded-full"
-      startContent={<SearchIcon />}
-      href={value ? `/explore/${value}` : "#"}
+      disabled
+      isDisabled
+      radius="none"
+      className="aspect-square h-full min-w-fit p-1"
+      startContent={<SearchIcon className="text-sm" />}
     />
   )
 }
