@@ -43,13 +43,6 @@ const ImageCard: React.FC<Product> = ({ title, image }) => {
             />
           </Skeleton>
         </CardBody>
-        {/* The back button */}
-        <Button
-          as={Link}
-          href="/"
-          startContent={<ChevronLeft />}
-          className="absolute left-3 top-3 z-10 aspect-square min-w-fit bg-black text-white"
-        />
       </Skeleton>
     </Card>
   )

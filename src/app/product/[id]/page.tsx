@@ -17,6 +17,7 @@ import {
 import { getSingle } from "@/service"
 import { Button } from "@nextui-org/button"
 import FlatButton from "@/components/base/button/flat-button"
+import MobileHeader from "@/components/layout/mobile/header"
 
 // The dynamic page showing the product details
 export default async function ProductPage({ params }: DynamicPageProps) {
@@ -27,9 +28,14 @@ export default async function ProductPage({ params }: DynamicPageProps) {
   }
 
   return (
-    <section className="font-montserrat flex min-h-screen flex-col items-center bg-default-50 pb-28">
+    <section className="font-montserrat relative flex min-h-screen flex-col items-center bg-default-50 pb-28">
+      {/* The header */}
+      <MobileHeader title="details" />
+
       {/* The image section with the card */}
-      <ImageCard {...product} />
+      <div className="mt-24">
+        <ImageCard {...product} />
+      </div>
       {/* The section with headings */}
       <Description {...product} />
       {/* The proceed bar */}
