@@ -15,7 +15,7 @@ import { Product } from "@/types"
 
 export default async function Home() {
   return (
-    <section className="mt-20 flex flex-col items-center justify-center gap-4 [&>*]:w-full">
+    <section className="flex flex-col items-center justify-center gap-4 pt-20 [&>*]:w-full">
       <HeroSection />
       <CategoryChips />
       <CuratedProducts />

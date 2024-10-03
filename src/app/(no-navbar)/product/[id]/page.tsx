@@ -5,13 +5,7 @@ import { DynamicPageProps, Product } from "@/types"
 import ImageCard from "@/components/base/card/image-card"
 
 // Icons
-import {
-  ChevronRight,
-  Heart,
-  HeartFilledIcon,
-  RatingStar,
-  ShoppingBag,
-} from "@/components/icons"
+import { Heart, RatingStar, ShoppingBag } from "@/components/icons"
 import { getSingle } from "@/service"
 import { Button } from "@nextui-org/button"
 import FlatButton from "@/components/base/button/flat-button"
@@ -26,19 +20,19 @@ export default async function ProductPage({ params }: DynamicPageProps) {
   }
 
   return (
-    <section className="font-montserrat relative flex min-h-screen flex-col items-center bg-default-50 pb-28">
+    <>
       {/* The header */}
       <MobileHeader title="details" />
 
       {/* The image section with the card */}
-      <div className="mt-20">
+      <div className="pt-20">
         <ImageCard {...product} />
       </div>
       {/* The section with headings */}
       <Description {...product} />
       {/* The proceed bar */}
       <CheckoutBar {...product} />
-    </section>
+    </>
   )
 }
 

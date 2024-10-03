@@ -1,8 +1,8 @@
-import { ChevronLeft, ShoppingBag } from "@/components/icons"
-import { Button } from "@nextui-org/button"
-import { Link } from "@nextui-org/link"
 import clsx from "clsx"
 import React from "react"
+
+import LinkButton from "@/components/base/button/link-button"
+import { ChevronLeft, ShoppingBag } from "@/components/icons"
 
 export interface MobileHeaderProps {
   backHref?: string
@@ -11,7 +11,7 @@ export interface MobileHeaderProps {
 
 export default async function MobileHeader({
   title,
-  backHref = "/",
+  backHref,
 }: MobileHeaderProps) {
   return (
     <header
@@ -22,44 +22,17 @@ export default async function MobileHeader({
         "bg-background text-foreground"
       )}
     >
-      <ButtonLink
+      <LinkButton
         className="absolute left-3 top-1/2 -translate-y-1/2"
         href={backHref}
         startContent={<ChevronLeft />}
       />
       <h1 className="text-2xl font-medium capitalize">{title}</h1>
-      <ButtonLink
+      <LinkButton
         className="absolute right-3 top-1/2 -translate-y-1/2"
         href="/cart"
         startContent={<ShoppingBag />}
       />
     </header>
-  )
-}
-
-const ButtonLink = ({
-  href,
-  className,
-  startContent,
-  children,
-}: {
-  href: string
-  className?: string
-  startContent?: React.ReactNode
-  children?: React.ReactNode
-}) => {
-  return (
-    <Button
-      as={Link}
-      href={href}
-      startContent={startContent}
-      radius="full"
-      className={clsx(
-        "z-10 aspect-square min-w-fit bg-foreground p-[2px] text-background",
-        className
-      )}
-    >
-      {children}
-    </Button>
   )
 }
