@@ -1,19 +1,19 @@
-import { SVGProps } from "react";
+import { SVGProps } from "react"
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
-  size?: number;
-};
+  size?: number
+}
 
 export interface Product {
-  id: number,
-  title: string,
-  price: number,
-  description: string,
-  category: string,
-  image: string,
+  id: number
+  title: string
+  price: number
+  description: string
+  category: string
+  image: string
   rating: {
-      rate: number,
-      count: number
+    rate: number
+    count: number
   }
 }
 
@@ -21,6 +21,6 @@ export interface Product {
  * Page prop types
  */
 export interface DynamicPageProps {
-  params: { id: string },
+  params: { id: string }
   searchParams?: { [key: string]: string | undefined }
 }

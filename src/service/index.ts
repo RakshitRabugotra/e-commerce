@@ -36,28 +36,29 @@ export const getSingle = async (id: string, init?: ExtendedRequestInit) => {
   }
 }
 
-
 /**
  * A dummy search api, but manually searches through list of all products
  */
-export const searchProduct = async(name: string) => {
+export const searchProduct = async (name: string) => {
   try {
-    const response = await productFetch("");
+    const response = await productFetch("")
     const products = (await response.json()) as Product[]
-    return getMatching(name, products, (item) => item.title)
-
-  } catch(error) {
-    console.error("error while searching for products: ", error);
-    return null;
+    return getMatching(name, products, item => item.title)
+  } catch (error) {
+    console.error("error while searching for products: ", error)
+    return null
   }
 }
-
 
 /**
  * Private utilities
  */
-function getMatching<T>(text: string, array: T[], keyGetter: (item: T) => string) {
-  return array.filter((item) => {
+function getMatching<T>(
+  text: string,
+  array: T[],
+  keyGetter: (item: T) => string
+) {
+  return array.filter(item => {
     const content = keyGetter(item)
     return content.toLowerCase().includes(text.toLowerCase())
   })
