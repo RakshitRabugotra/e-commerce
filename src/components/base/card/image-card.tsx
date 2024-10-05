@@ -2,20 +2,20 @@
 
 import { useEffect, useState } from "react"
 
-// Icons
-import { ChevronLeft } from "@/components/icons"
-
 // UI
 import { Card, CardBody } from "@nextui-org/card"
-import { Image } from "@nextui-org/image"
 import { Skeleton } from "@nextui-org/skeleton"
 
 // Constants
-import { Button } from "@nextui-org/button"
-import { Link } from "@nextui-org/link"
 import { Product } from "@/types"
+import Image from "next/image"
+import clsx from "clsx"
 
-const ImageCard: React.FC<Product> = ({ title, image }) => {
+const ImageCard: React.FC<Product & { className?: string }> = ({
+  title,
+  image,
+  className,
+}) => {
   // For showing a skeleton till the image loads
   const [isLoaded, setLoaded] = useState(false)
 
@@ -25,25 +25,30 @@ const ImageCard: React.FC<Product> = ({ title, image }) => {
 
   return (
     <Card
-      radius="lg"
+      radius="none"
       shadow="none"
-      className="w-full overflow-visible border-none"
+      className={clsx(
+        "my-auto aspect-square h-min w-full",
+        "border-none",
+        "xl:max-h-[80vh] xl:max-w-[80vh]",
+        className
+      )}
     >
-      <Skeleton isLoaded={isLoaded}>
-        <CardBody className="w-hull aspect-square bg-white p-0">
-          <Skeleton
-            isLoaded={image != null && isLoaded}
-            className="aspect-square w-full [&_*]:!max-w-full"
-          >
-            <Image
-              alt={title}
-              className="aspect-square w-full object-contain"
-              src={image}
-              loading="lazy"
-            />
-          </Skeleton>
-        </CardBody>
-      </Skeleton>
+      <CardBody className="w-hull aspect-square bg-white p-0">
+        <Skeleton
+          isLoaded={image != null && isLoaded}
+          className="aspect-square w-full xl:aspect-auto [&_*]:!max-w-full"
+        >
+          <Image
+            alt={title}
+            className="mx-auto block aspect-square w-full max-w-full object-contain"
+            src={image}
+            width={500}
+            height={500}
+            loading="lazy"
+          />
+        </Skeleton>
+      </CardBody>
     </Card>
   )
 }

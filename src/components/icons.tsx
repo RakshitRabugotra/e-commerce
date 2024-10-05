@@ -110,6 +110,7 @@ import {
   FaShoppingBag,
   FaStar,
   FaSearch,
+  FaHome,
 } from "react-icons/fa"
 import { IconBaseProps } from "react-icons"
 
@@ -130,3 +131,5 @@ export const Heart = ({
   filled ? <FaHeart {...props} /> : <FaRegHeart {...props} />
 
 export const Search = (props: IconBaseProps) => <FaSearch {...props} />
+
+export const HomeIcon = (props: IconBaseProps) => <FaHome {...props} />

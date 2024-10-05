@@ -25,11 +25,13 @@ export default async function ProductPage({ params }: DynamicPageProps) {
       <MobileHeader title="details" />
 
       {/* The image section with the card */}
-      <div className="pt-20">
+      <div className="flex flex-col items-center pt-20 xl:h-[80vh] xl:grow xl:flex-row xl:justify-around xl:px-3">
         <ImageCard {...product} />
+        {/* The section with headings */}
+        <div className="xl:h-1/2 xl:max-w-[40%]">
+          <Description {...product} />
+        </div>
       </div>
-      {/* The section with headings */}
-      <Description {...product} />
       {/* The proceed bar */}
       <CheckoutBar {...product} />
     </>
@@ -43,29 +45,34 @@ const Description: React.FC<Product> = ({
   price,
 }) => {
   return (
-    <article className="flex w-full flex-col p-4">
+    <article className="w-full p-4 xl:p-0">
       {/* The header section */}
+
       {/* The reviews */}
-      <div className="inline-flex items-center justify-between">
-        <div className="inline-flex items-center gap-1">
-          <RatingStar className="text-amber-500" />
-          {rating.rate}&nbsp;
-          {`(${rating.count}) Reviews`}
+
+      <div className="flex flex-col xl:flex-col-reverse xl:gap-4">
+        <div className="inline-flex items-center justify-between">
+          <div className="inline-flex items-center gap-1">
+            <RatingStar className="text-amber-500" />
+            {rating.rate}&nbsp;
+            {`(${rating.count}) Reviews`}
+          </div>
+
+          <Button
+            className="z-20 h-fit min-w-fit bg-transparent p-0 text-red-500"
+            // onClick={handleLike}
+          >
+            <Heart size={24} filled={true} />
+          </Button>
         </div>
 
-        <Button
-          className="z-20 h-fit min-w-fit bg-transparent p-0 text-red-500"
-          // onClick={handleLike}
-        >
-          <Heart size={24} filled={true} />
-        </Button>
+        <h1 className="text-xl font-semibold xl:text-3xl">{title}</h1>
       </div>
-
-      <h1 className="text-3xl font-semibold">{title}</h1>
-
       {/* The price */}
 
-      <p className="text-xl font-bold text-success">{"$" + price.toFixed(2)}</p>
+      <p className="text-xl font-bold text-success xl:mt-10 xl:text-4xl">
+        {"$" + price.toFixed(2)}
+      </p>
 
       {/* The description of the product */}
       <p className="mt-6">{description}</p>
@@ -75,7 +82,7 @@ const Description: React.FC<Product> = ({
 
 const CheckoutBar: React.FC<Product> = ({ ...rest }) => {
   return (
-    <section className="font-montserrat fixed inset-0 top-auto inline-flex items-center gap-4 bg-background/90 px-5 py-3 backdrop-blur-sm">
+    <section className="font-montserrat fixed inset-0 top-auto z-50 inline-flex items-center gap-4 bg-background/90 px-5 py-3 backdrop-blur-sm xl:hidden">
       <FlatButton
         className="basis-1/2 border-2 border-solid border-foreground bg-background font-semibold uppercase text-foreground"
         startContent={<ShoppingBag />}

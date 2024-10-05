@@ -16,7 +16,7 @@ export default async function MobileHeader({
   return (
     <header
       className={clsx(
-        "sm:hidden",
+        "xl:hidden",
         "fixed inset-0 bottom-auto z-50 h-20",
         "inline-flex items-center justify-center",
         "bg-background text-foreground"

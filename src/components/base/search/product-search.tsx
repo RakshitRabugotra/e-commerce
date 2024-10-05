@@ -3,20 +3,23 @@
 // Components
 import { Link } from "@nextui-org/link"
 import { Button } from "@nextui-org/button"
-import { Input } from "@nextui-org/input"
+import { Input, InputProps } from "@nextui-org/input"
 // Icons
 import { SearchIcon } from "@/components/icons"
 import clsx from "clsx"
+import React from "react"
+
+export interface ProductSearchProps extends InputProps {
+  search: string
+  setSearch: React.Dispatch<React.SetStateAction<string>>
+}
 
 export const ProductSearch = ({
   search,
   setSearch,
   className,
-}: {
-  search: string
-  setSearch: React.Dispatch<React.SetStateAction<string>>
-  className?: string
-}) => {
+  ...rest
+}: ProductSearchProps) => {
   return (
     <Input
       size="md"
@@ -33,6 +36,7 @@ export const ProductSearch = ({
       placeholder="Shirt"
       onChange={e => setSearch(e.target.value)}
       endContent={<SubmitButton value={search} />}
+      {...rest}
     />
   )
 }

@@ -16,8 +16,10 @@ import { Product } from "@/types"
 export default async function Home() {
   return (
     <section className="flex flex-col items-center justify-center gap-4 pt-20 [&>*]:w-full">
-      <HeroSection />
-      <CategoryChips />
+      <div className="flex flex-col items-center xl:flex-col-reverse [&>*]:w-full [&>*]:flex-1">
+        <HeroSection />
+        <CategoryChips />
+      </div>
       <CuratedProducts />
     </section>
   )
@@ -25,7 +27,7 @@ export default async function Home() {
 
 const HeroSection = () => {
   return (
-    <section>
+    <section className="overflow-hidden shadow-sm xl:rounded-xl">
       <Image
         src={"/images/main-banner.webp"}
         width={2048}
@@ -61,7 +63,7 @@ const TopHeadingBanner: React.FC<TopHeadingBannerProps> = ({
 
 const CategoryChips = () => {
   return (
-    <section>
+    <section className="my-4 bg-background py-3 shadow-sm xl:rounded-xl xl:px-3">
       <TopHeadingBanner
         heading="Shop By Category"
         hyperlinkText="See all"
@@ -91,7 +93,7 @@ const CuratedProducts = async () => {
   const products = (await response.json()) as Product[]
 
   return (
-    <section>
+    <section className="bg-background py-3 shadow-sm xl:rounded-xl xl:px-3">
       <TopHeadingBanner
         heading="Curated For You"
         hyperlinkText="See all"
@@ -100,7 +102,7 @@ const CuratedProducts = async () => {
 
       <div className="mt-6">
         <Slider
-          className="gap-4 pl-6"
+          className="gap-4 py-3 pl-6"
           renderItem={({ key, ...props }) => (
             <ProductCard
               {...props}

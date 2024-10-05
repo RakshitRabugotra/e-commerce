@@ -47,8 +47,8 @@ export const ProductCard: React.FC<
         />
       </CardHeader>
       <CardBody className={clsx("mt-2 p-0 px-1", rest.classNames?.body)}>
-        <p className="inline-flex items-center gap-1 text-sm sm:text-base">
-          <RatingStar />
+        <p className="inline-flex items-center gap-1 text-sm xl:text-base">
+          <RatingStar className="text-amber-500" />
           <strong>{rating.rate}</strong>
           <span className="text-gray-400">{` (${rating.count})`}</span>
         </p>
