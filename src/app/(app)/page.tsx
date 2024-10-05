@@ -14,13 +14,20 @@ import { productFetch } from "@/service"
 import { Product } from "@/types"
 
 export default async function Home() {
+  const response = await productFetch("", {
+    queryParams: {
+      limit: "5",
+    },
+  })
+  const products = (await response.json()) as Product[]
+
   return (
     <section className="flex flex-col items-center justify-center gap-4 pt-20 [&>*]:w-full">
       <div className="flex flex-col items-center xl:flex-col-reverse [&>*]:w-full [&>*]:flex-1">
         <HeroSection />
         <CategoryChips />
       </div>
-      <CuratedProducts />
+      <CuratedProducts items={products} />
     </section>
   )
 }
@@ -83,15 +90,7 @@ const CategoryChips = () => {
   )
 }
 
-const CuratedProducts = async () => {
-  // Fetch the products
-  const response = await productFetch("", {
-    queryParams: {
-      limit: "5",
-    },
-  })
-  const products = (await response.json()) as Product[]
-
+const CuratedProducts: React.FC<{ items: Product[] }> = ({ items }) => {
   return (
     <section className="bg-background py-3 shadow-sm xl:rounded-xl xl:px-3">
       <TopHeadingBanner
@@ -110,7 +109,7 @@ const CuratedProducts = async () => {
               classNames={{ base: "w-[50%] max-w-[50%] aspect-[3/4]" }}
             />
           )}
-          items={products}
+          items={items}
         />
       </div>
     </section>

@@ -1,7 +1,7 @@
 import { Button, ButtonProps } from "@nextui-org/button"
 import clsx from "clsx"
 
-export default async function FlatButton({
+export default function FlatButton({
   children,
   className,
   variant,

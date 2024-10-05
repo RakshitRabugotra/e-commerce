@@ -9,10 +9,7 @@ export interface MobileHeaderProps {
   title: string
 }
 
-export default async function MobileHeader({
-  title,
-  backHref,
-}: MobileHeaderProps) {
+export default function MobileHeader({ title, backHref }: MobileHeaderProps) {
   return (
     <header
       className={clsx(
