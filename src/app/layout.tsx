@@ -41,7 +41,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+        <Providers themeProps={{ attribute: "class", defaultTheme: "system" }}>
           <main className="relative mx-auto flex min-h-screen flex-col bg-transparent xl:container xl:px-3">
             {children}
           </main>
